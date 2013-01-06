@@ -1,0 +1,13 @@
+grammar HTML
+
+	document 			<-	(doctype / text / tag)*
+
+	tag 				<-	open_tag (text / tag)* close_tag
+
+	open_tag 			<- "<" [0-9a-zA-Z \"'=-]+ ">"
+
+	close_tag			<-	"</" [0-9a-zA-Z]+ ">"
+
+	doctype				<-	"<!DOCTYPE " [0-9a-zA-Z]+ ">"
+
+	text 				<- [^<]+
